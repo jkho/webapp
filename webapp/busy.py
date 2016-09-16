@@ -5,7 +5,6 @@ from flask import Flask
 
 app = Flask(__name__)
 
-@app.route('/')
 def primes(n):
     primfac = []
     d = 2
@@ -18,13 +17,14 @@ def primes(n):
        primfac.append(n)
     return primfac
 
+@app.route('/')
 def hello():
-  while True:
-	  r = random.random()
-	  n = int(r * 100000000)
-	  print n, primes(n)
-  provider = str(os.environ.get('PROVIDER', 'world'))
-  return 'Goodbye '+provider+'!'
+    while True:
+	r = random.random()
+	n = int(r * 100000000)
+	print n, primes(n)
+    provider = str(os.environ.get('PROVIDER', 'world'))
+    return 'Goodbye '+provider+'!'
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
