@@ -22,7 +22,7 @@ def primes(n):
     return primfac
 
 @app.route('/busy')
-def hello():
+def busy():
     while True:
 	r = random.random()
 	n = int(r * 100000000)
