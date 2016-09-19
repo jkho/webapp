@@ -5,6 +5,11 @@ from flask import Flask
 
 app = Flask(__name__)
 
+@app.route('/')
+def ping():
+    provider = str(os.environ.get('PROVIDER', 'world'))
+    return 'Ping '+provider+'!'
+
 @app.route('/hello')
 def hello():
     provider = str(os.environ.get('PROVIDER', 'world'))
