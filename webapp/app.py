@@ -32,7 +32,7 @@ def busy():
     while True:
 	r = random.random()
 	n = int(r * 100000000)
-    print n, primes(n)
+        print n, primes(n)
 
 
 if __name__ == '__main__':
