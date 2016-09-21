@@ -4,6 +4,7 @@ import random
 from flask import Flask
 
 app = Flask(__name__)
+busy = False
 
 @app.route('/')
 def ping():
@@ -29,11 +30,17 @@ def primes(n):
 
 @app.route('/busy')
 def busy():
-    while True:
+    if busy:
+    	return 'busy'
+    busy = True
+    while busy:
 	r = random.random()
 	n = int(r * 100000000)
         print n, primes(n)
 
+@app.route('/stop')
+def stop():
+    busy = False
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
