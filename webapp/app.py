@@ -30,6 +30,7 @@ def primes(n):
 
 @app.route('/busy')
 def busy():
+    global busy
     if busy:
     	return 'busy'
     busy = True
@@ -37,10 +38,13 @@ def busy():
 	r = random.random()
 	n = int(r * 100000000)
         print n, primes(n)
+    return 'busy stopped'
 
 @app.route('/stop')
 def stop():
+    global busy
     busy = False
+    return 'stop'
 
 if __name__ == '__main__':
     # Bind to PORT if defined, otherwise default to 5000.
